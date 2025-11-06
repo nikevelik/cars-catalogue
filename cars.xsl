@@ -4,7 +4,6 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
-
   <xsl:template match="/catalog">
     <fo:root>
 
@@ -73,11 +72,16 @@
                       background-color="#f6f7f9"
                       border="0.6pt solid #dcdcdc">
 
+              <!-- image -->
+              <fo:block text-align="center" space-after="8pt">
+                <fo:external-graphic src="{@picture-link}" content-width="16cm" scaling="uniform"/>
+              </fo:block>
+
               <!-- headline -->
               <fo:block font-size="13pt"
                         font-weight="bold"
                         color="#0f2133"
-                        space-after="4pt">
+                        space-after="6pt">
                 <xsl:value-of select="$brand/name"/>
                 <fo:inline> — </fo:inline>
                 <fo:inline font-weight="normal" color="#4b4b4b">

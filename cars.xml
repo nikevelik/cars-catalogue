@@ -45,23 +45,21 @@
 
     <!-- Cars -->
     <cars>
-        <car id="c1" modelRef="m1" engineRef="e1">
+        <car id="c1" modelRef="m1" engineRef="e1" picture-link="images/c1.jpg">
             <price>20000</price>
             <description>Standard Corolla with 1.6L petrol engine</description>
             <color value="white"/>
             <transmission type="manual"/>
             <category type="sedan"/>
-            <picture>corolla_1.6_white.jpg</picture>
             <year>2024</year>
         </car>
 
-        <car id="c2" modelRef="m2" engineRef="e4">
+        <car id="c2" modelRef="m2" engineRef="e4" picture-link="images/c2.jpjg">
             <price>35000</price>
             <description>RAV4 hybrid with advanced features</description>
-            <color value="blue"/>
+            <color value="white"/>
             <transmission type="automatic"/>
             <category type="SUV"/>
-            <picture>rav4_2.5_hybrid_blue.jpg</picture>
             <year>2024</year>
         </car>
     </cars>
