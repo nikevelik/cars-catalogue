@@ -64,36 +64,6 @@
             <picture>rav4_2.5_hybrid_blue.jpg</picture>
             <year>2024</year>
         </car>
-
-        <car id="c3" modelRef="m3" engineRef="e5">
-            <price>41000</price>
-            <description>3 Series sedan with 2.0L petrol engine</description>
-            <color value="black"/>
-            <transmission type="automatic"/>
-            <category type="sedan"/>
-            <picture>3series_2.0_black.jpg</picture>
-            <year>2024</year>
-        </car>
-
-        <car id="c4" modelRef="m6" engineRef="e14">
-            <price>58000</price>
-            <description>Q5 SUV with hybrid engine</description>
-            <color value="silver"/>
-            <transmission type="DSG"/>
-            <category type="SUV"/>
-            <picture>q5_hybrid_silver.jpg</picture>
-            <year>2024</year>
-        </car>
-
-        <car id="c5" modelRef="m8" engineRef="e17">
-            <price>45000</price>
-            <description>Kodiaq SUV with petrol engine</description>
-            <color value="red"/>
-            <transmission type="automatic"/>
-            <category type="SUV"/>
-            <picture>kodiaq_2.0_petrol_red.jpg</picture>
-            <year>2024</year>
-        </car>
     </cars>
 
 </catalog>
