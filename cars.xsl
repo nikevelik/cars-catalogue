@@ -1,118 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:fo="http://www.w3.org/1999/XSL/Format"
-                version="1.0">
+<xsl:stylesheet
+    version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
-  <!-- Root template -->
+
   <xsl:template match="/catalog">
     <fo:root>
+
+      <!-- Layout -->
       <fo:layout-master-set>
         <fo:simple-page-master master-name="A4"
-                               page-height="29.7cm"
-                               page-width="21cm"
-                               margin-top="2cm"
-                               margin-bottom="2cm"
-                               margin-left="2cm"
-                               margin-right="2cm">
-          <fo:region-body/>
+                               page-width="21cm" page-height="29.7cm"
+                               margin-top="2cm" margin-bottom="2cm"
+                               margin-left="2.5cm" margin-right="2.5cm">
+          <fo:region-body margin-top="1.8cm" margin-bottom="1.2cm"/>
+          <fo:region-before extent="1.6cm"/>
+          <fo:region-after extent="1.2cm"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
 
+      <!-- Page sequence -->
       <fo:page-sequence master-reference="A4">
-        <fo:flow flow-name="xsl-region-body">
 
-          <fo:block font-size="18pt" font-weight="bold" space-after="10pt">Car Catalog</fo:block>
+        <!-- Header -->
+        <fo:static-content flow-name="xsl-region-before">
+          <fo:block text-align="center"
+                    font-family="sans-serif"
+                    font-size="11pt"
+                    font-weight="bold"
+                    color="#444444"
+                    padding-top="6pt">
+            <xsl:text>Car Catalog</xsl:text>
+          </fo:block>
+        </fo:static-content>
 
-          <!-- Brands Table -->
-          <fo:block font-size="14pt" font-weight="bold" space-before="10pt" space-after="5pt">Brands</fo:block>
-          <fo:table table-layout="fixed" width="50%" border="0.5pt solid black" border-collapse="collapse">
-            <fo:table-column column-width="100%"/>
-            <fo:table-header>
-              <fo:table-row background-color="#CCCCCC">
-                <fo:table-cell><fo:block>Brand Name</fo:block></fo:table-cell>
-              </fo:table-row>
-            </fo:table-header>
-            <fo:table-body>
-              <xsl:for-each select="brands/brand">
-                <fo:table-row>
-                  <fo:table-cell><fo:block><xsl:value-of select="name"/></fo:block></fo:table-cell>
-                </fo:table-row>
-              </xsl:for-each>
-            </fo:table-body>
-          </fo:table>
+        <!-- Footer -->
+        <fo:static-content flow-name="xsl-region-after">
+          <fo:block text-align="center"
+                    font-family="sans-serif"
+                    font-size="9pt"
+                    color="#777777">
+            <fo:inline>Page </fo:inline><fo:page-number/><fo:inline> of </fo:inline>
+            <fo:page-number-citation ref-id="end-of-doc"/>
+          </fo:block>
+        </fo:static-content>
 
-          <!-- Models Table -->
-          <fo:block font-size="14pt" font-weight="bold" space-before="10pt" space-after="5pt">Models</fo:block>
-          <fo:table table-layout="fixed" width="100%" border="0.5pt solid black" border-collapse="collapse">
-            <fo:table-column column-width="40%"/>
-            <fo:table-column column-width="60%"/>
-            <fo:table-header>
-              <fo:table-row background-color="#CCCCCC">
-                <fo:table-cell><fo:block>Model Name</fo:block></fo:table-cell>
-                <fo:table-cell><fo:block>Brand Name</fo:block></fo:table-cell>
-              </fo:table-row>
-            </fo:table-header>
-            <fo:table-body>
-              <xsl:for-each select="models/model">
-                <fo:table-row>
-                  <fo:table-cell><fo:block><xsl:value-of select="name"/></fo:block></fo:table-cell>
-                  <fo:table-cell>
-                    <fo:block>
-                      <xsl:value-of select="/catalog/brands/brand[@id = current()/@brandRef]/name"/>
-                    </fo:block>
-                  </fo:table-cell>
-                </fo:table-row>
-              </xsl:for-each>
-            </fo:table-body>
-          </fo:table>
+        <!-- Body -->
+        <fo:flow flow-name="xsl-region-body"
+                 font-family="sans-serif"
+                 font-size="10pt"
+                 color="#222222">
 
-          <!-- Engines Table -->
-          <fo:block font-size="14pt" font-weight="bold" space-before="10pt" space-after="5pt">Engines</fo:block>
-          <fo:table table-layout="fixed" width="100%" border="0.5pt solid black" border-collapse="collapse">
-            <fo:table-column column-width="40%"/>
-            <fo:table-column column-width="30%"/>
-            <fo:table-column column-width="30%"/>
-            <fo:table-header>
-              <fo:table-row background-color="#CCCCCC">
-                <fo:table-cell><fo:block>Engine Name</fo:block></fo:table-cell>
-                <fo:table-cell><fo:block>Model Name</fo:block></fo:table-cell>
-                <fo:table-cell><fo:block>Power</fo:block></fo:table-cell>
-              </fo:table-row>
-            </fo:table-header>
-            <fo:table-body>
-              <xsl:for-each select="engines/engine">
-                <fo:table-row>
-                  <fo:table-cell><fo:block><xsl:value-of select="name"/></fo:block></fo:table-cell>
-                  <fo:table-cell>
-                    <fo:block>
-                      <xsl:value-of select="/catalog/models/model[@id = current()/@modelRef]/name"/>
-                    </fo:block>
-                  </fo:table-cell>
-                  <fo:table-cell><fo:block><xsl:value-of select="power"/></fo:block></fo:table-cell>
-                </fo:table-row>
-              </xsl:for-each>
-            </fo:table-body>
-          </fo:table>
+          <!-- Title -->
+          <fo:block text-align="center"
+                    font-size="22pt"
+                    font-weight="bold"
+                    space-after="14pt"
+                    color="#1f3350">
+            Car Catalog
+          </fo:block>
 
-          <!-- Cars -->
-          <fo:block font-size="14pt" font-weight="bold" space-before="10pt" space-after="5pt">Cars</fo:block>
+          <!-- Each car -->
           <xsl:for-each select="cars/car">
-            <fo:block border="0.5pt solid black" padding="5pt" margin-bottom="5pt">
-              <xsl:variable name="model" select="/catalog/models/model[@id = current()/@modelRef]"/>
-              <xsl:variable name="engine" select="/catalog/engines/engine[@id = current()/@engineRef]"/>
-              <xsl:variable name="brand" select="/catalog/brands/brand[@id = $model/@brandRef]"/>
+            <xsl:variable name="model"  select="/catalog/models/model[@id = current()/@modelRef]"/>
+            <xsl:variable name="engine" select="/catalog/engines/engine[@id = current()/@engineRef]"/>
+            <xsl:variable name="brand"  select="/catalog/brands/brand[@id = $model/@brandRef]"/>
 
-              <fo:block><fo:inline font-weight="bold">Brand:</fo:inline> <xsl:value-of select="$brand/name"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Model:</fo:inline> <xsl:value-of select="$model/name"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Engine:</fo:inline> <xsl:value-of select="$engine/name"/> (<xsl:value-of select="$engine/power"/>)</fo:block>
-              <fo:block><fo:inline font-weight="bold">Price:</fo:inline> $<xsl:value-of select="price"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Description:</fo:inline> <xsl:value-of select="description"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Color:</fo:inline> <xsl:value-of select="color/@value"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Transmission:</fo:inline> <xsl:value-of select="transmission/@type"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Category:</fo:inline> <xsl:value-of select="category/@type"/></fo:block>
-              <fo:block><fo:inline font-weight="bold">Year:</fo:inline> <xsl:value-of select="year"/></fo:block>
+            <!-- Each car starts on a new page -->
+            <fo:block break-before="page" keep-together="always"
+                      padding="10pt" margin-bottom="10pt"
+                      background-color="#f6f7f9"
+                      border="0.6pt solid #dcdcdc">
+
+              <!-- headline -->
+              <fo:block font-size="13pt"
+                        font-weight="bold"
+                        color="#0f2133"
+                        space-after="4pt">
+                <xsl:value-of select="$brand/name"/>
+                <fo:inline> — </fo:inline>
+                <fo:inline font-weight="normal" color="#4b4b4b">
+                  <xsl:value-of select="$model/name"/>
+                </fo:inline>
+              </fo:block>
+
+              <!-- details -->
+              <fo:block keep-together="always">
+                <fo:block><fo:inline font-weight="bold">Engine: </fo:inline>
+                  <xsl:value-of select="$engine/name"/> (<xsl:value-of select="$engine/power"/>)
+                </fo:block>
+
+                <fo:block><fo:inline font-weight="bold">Price: </fo:inline>
+                  $<xsl:value-of select="format-number(price, '#,##0.00')"/>
+                </fo:block>
+
+                <fo:block><fo:inline font-weight="bold">Description: </fo:inline>
+                  <xsl:value-of select="description"/>
+                </fo:block>
+
+                <fo:block><fo:inline font-weight="bold">Color: </fo:inline>
+                  <xsl:value-of select="color/@value"/>
+                </fo:block>
+
+                <fo:block><fo:inline font-weight="bold">Transmission: </fo:inline>
+                  <xsl:value-of select="transmission/@type"/>
+                </fo:block>
+
+                <fo:block><fo:inline font-weight="bold">Category: </fo:inline>
+                  <xsl:value-of select="category/@type"/>
+                </fo:block>
+
+                <fo:block><fo:inline font-weight="bold">Year: </fo:inline>
+                  <xsl:value-of select="year"/>
+                </fo:block>
+              </fo:block>
             </fo:block>
           </xsl:for-each>
+
+          <!-- Page-number target -->
+          <fo:block id="end-of-doc"/>
 
         </fo:flow>
       </fo:page-sequence>
