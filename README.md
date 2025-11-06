@@ -27,3 +27,7 @@ then run the command:
 xmllint --noout --valid cars.xml 
 ```
 if there is any issue with the xml, errors will appear. Otherwise (if the xml is completely valid), no output will be shown.
+
+### 3. Quick reference
+
+For quick reference, there is available [example output file](https://github.com/nikevelik/cars-catalogue)
