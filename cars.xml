@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE catalog SYSTEM "cars.dtd"> -->
 <catalog>
 
     <!-- Brands -->
@@ -66,7 +67,7 @@
         <car id="c3" modelRef="m3" engineRef="e6" picture-link="images/c3.jpg">
             <price>48000</price>
             <description>BMW 3 Series with 3.0L diesel engine and luxury trim</description>
-            <color value="black"/>
+            <color value="red"/>
             <transmission type="automatic"/>
             <category type="sedan"/>
             <year>2024</year>
@@ -75,7 +76,7 @@
         <car id="c4" modelRef="m4" engineRef="e9" picture-link="images/c4.jpg">
             <price>72000</price>
             <description>BMW X5 hybrid offering exceptional performance and efficiency</description>
-            <color value="gray"/>
+            <color value="blue"/>
             <transmission type="automatic"/>
             <category type="SUV"/>
             <year>2025</year>
@@ -84,7 +85,7 @@
         <car id="c5" modelRef="m5" engineRef="e10" picture-link="images/c5.jpg">
             <price>39000</price>
             <description>Audi A4 with 2.0L petrol engine and premium interior</description>
-            <color value="blue"/>
+            <color value="red"/>
             <transmission type="manual"/>
             <category type="sedan"/>
             <year>2024</year>
@@ -93,7 +94,7 @@
         <car id="c6" modelRef="m6" engineRef="e14" picture-link="images/c6.jpg">
             <price>65000</price>
             <description>Audi Q5 hybrid with advanced safety features</description>
-            <color value="silver"/>
+            <color value="green"/>
             <transmission type="automatic"/>
             <category type="SUV"/>
             <year>2025</year>
@@ -111,7 +112,7 @@
         <car id="c8" modelRef="m8" engineRef="e18" picture-link="images/c8.jpg">
             <price>42000</price>
             <description>Škoda Kodiaq diesel 2.0L with 4x4 drivetrain</description>
-            <color value="white"/>
+            <color value="blue"/>
             <transmission type="automatic"/>
             <category type="SUV"/>
             <year>2025</year>

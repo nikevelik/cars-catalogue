@@ -11,11 +11,11 @@
       <fo:layout-master-set>
         <fo:simple-page-master master-name="A4"
                                page-width="21cm" page-height="29.7cm"
-                               margin-top="2cm" margin-bottom="2cm"
-                               margin-left="2.5cm" margin-right="2.5cm">
-          <fo:region-body margin-top="1.8cm" margin-bottom="1.2cm"/>
-          <fo:region-before extent="1.6cm"/>
-          <fo:region-after extent="1.2cm"/>
+                               margin-top="1.5cm" margin-bottom="1.5cm"
+                               margin-left="2cm" margin-right="2cm">
+          <fo:region-body margin-top="1.5cm" margin-bottom="1.0cm"/>
+          <fo:region-before extent="1.5cm"/>
+          <fo:region-after extent="1.0cm"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
 
@@ -26,7 +26,7 @@
         <fo:static-content flow-name="xsl-region-before">
           <fo:block text-align="center"
                     font-family="sans-serif"
-                    font-size="11pt"
+                    font-size="12pt"
                     font-weight="bold"
                     color="#444444"
                     padding-top="6pt">
@@ -38,7 +38,7 @@
         <fo:static-content flow-name="xsl-region-after">
           <fo:block text-align="center"
                     font-family="sans-serif"
-                    font-size="9pt"
+                    font-size="10pt"
                     color="#777777">
             <fo:inline>Page </fo:inline><fo:page-number/><fo:inline> of </fo:inline>
             <fo:page-number-citation ref-id="end-of-doc"/>
@@ -48,14 +48,14 @@
         <!-- Body -->
         <fo:flow flow-name="xsl-region-body"
                  font-family="sans-serif"
-                 font-size="10pt"
+                 font-size="11pt"
                  color="#222222">
 
           <!-- Title -->
           <fo:block text-align="center"
-                    font-size="22pt"
+                    font-size="26pt"
                     font-weight="bold"
-                    space-after="14pt"
+                    space-after="18pt"
                     color="#1f3350">
             Car Catalog
           </fo:block>
@@ -68,20 +68,20 @@
 
             <!-- Each car starts on a new page -->
             <fo:block break-before="page" keep-together="always"
-                      padding="10pt" margin-bottom="10pt"
+                      padding="20pt" margin-bottom="15pt"
                       background-color="#f6f7f9"
-                      border="0.6pt solid #dcdcdc">
+                      border="0.8pt solid #cccccc">
 
               <!-- image -->
-              <fo:block text-align="center" space-after="8pt">
-                <fo:external-graphic src="{@picture-link}" content-width="16cm" scaling="uniform"/>
+              <fo:block text-align="center" space-after="12pt">
+                <fo:external-graphic src="{@picture-link}" content-width="18cm" scaling="uniform"/>
               </fo:block>
 
               <!-- headline -->
-              <fo:block font-size="13pt"
+              <fo:block font-size="15pt"
                         font-weight="bold"
                         color="#0f2133"
-                        space-after="6pt">
+                        space-after="8pt">
                 <xsl:value-of select="$brand/name"/>
                 <fo:inline> — </fo:inline>
                 <fo:inline font-weight="normal" color="#4b4b4b">
@@ -90,7 +90,7 @@
               </fo:block>
 
               <!-- details -->
-              <fo:block keep-together="always">
+              <fo:block keep-together="always" line-height="1.6em" font-size="12pt">
                 <fo:block><fo:inline font-weight="bold">Engine: </fo:inline>
                   <xsl:value-of select="$engine/name"/> (<xsl:value-of select="$engine/power"/>)
                 </fo:block>

@@ -1,99 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<catalog>
+<!ELEMENT catalog (brands, models, engines, cars)>
 
-    <!-- Brands -->
-    <brands>
-        <brand id="b1"><name>Toyota</name></brand>
-        <brand id="b2"><name>BMW</name></brand>
-        <brand id="b3"><name>Audi</name></brand>
-        <brand id="b4"><name>Škoda</name></brand>
-    </brands>
+<!-- ===== Brands Section ===== -->
+<!ELEMENT brands (brand+)>
+<!ELEMENT brand (name)>
+<!ATTLIST brand
+    id ID #REQUIRED
+>
+<!ELEMENT name (#PCDATA)>
 
-    <!-- Models -->
-    <models>
-        <model id="m1" brandRef="b1"><name>Corolla</name></model>
-        <model id="m2" brandRef="b1"><name>RAV4</name></model>
-        <model id="m3" brandRef="b2"><name>3 Series</name></model>
-        <model id="m4" brandRef="b2"><name>X5</name></model>
-        <model id="m5" brandRef="b3"><name>A4</name></model>
-        <model id="m6" brandRef="b3"><name>Q5</name></model>
-        <model id="m7" brandRef="b4"><name>Octavia</name></model>
-        <model id="m8" brandRef="b4"><name>Kodiaq</name></model>
-    </models>
+<!-- ===== Models Section ===== -->
+<!ELEMENT models (model+)>
+<!ELEMENT model (name)>
+<!ATTLIST model
+    id ID #REQUIRED
+    brandRef IDREF #REQUIRED
+>
 
-    <!-- Engines -->
-    <engines>
-        <engine id="e1" modelRef="m1"><name>Corolla_1.6L_petrol</name><power>132 hp</power></engine>
-        <engine id="e2" modelRef="m1"><name>Corolla_1.8L_hybrid</name><power>140 hp</power></engine>
-        <engine id="e3" modelRef="m2"><name>RAV4_2.0L_petrol</name><power>175 hp</power></engine>
-        <engine id="e4" modelRef="m2"><name>RAV4_2.5L_hybrid</name><power>222 hp</power></engine>
-        <engine id="e5" modelRef="m3"><name>3Series_2.0L_petrol</name><power>156 hp</power></engine>
-        <engine id="e6" modelRef="m3"><name>3Series_3.0L_diesel</name><power>286 hp</power></engine>
-        <engine id="e7" modelRef="m4"><name>X5_3.0L_petrol</name><power>282 hp</power></engine>
-        <engine id="e8" modelRef="m4"><name>X5_3.0L_diesel</name><power>340 hp</power></engine>
-        <engine id="e9" modelRef="m4"><name>X5_hybrid</name><power>389 hp</power></engine>
-        <engine id="e10" modelRef="m5"><name>A4_2.0L_petrol</name><power>150 hp</power></engine>
-        <engine id="e11" modelRef="m5"><name>A4_2.0L_diesel</name><power>204 hp</power></engine>
-        <engine id="e12" modelRef="m6"><name>Q5_2.0L_petrol</name><power>204 hp</power></engine>
-        <engine id="e13" modelRef="m6"><name>Q5_2.0L_diesel</name><power>231 hp</power></engine>
-        <engine id="e14" modelRef="m6"><name>Q5_hybrid</name><power>367 hp</power></engine>
-        <engine id="e15" modelRef="m7"><name>Octavia_1.5L_petrol</name><power>115 hp</power></engine>
-        <engine id="e16" modelRef="m7"><name>Octavia_2.0L_diesel</name><power>150 hp</power></engine>
-        <engine id="e17" modelRef="m8"><name>Kodiaq_2.0L_petrol</name><power>190 hp</power></engine>
-        <engine id="e18" modelRef="m8"><name>Kodiaq_2.0L_diesel</name><power>200 hp</power></engine>
-    </engines>
+<!-- ===== Engines Section ===== -->
+<!ELEMENT engines (engine+)>
+<!ELEMENT engine (name, power)>
+<!ATTLIST engine
+    id ID #REQUIRED
+    modelRef IDREF #REQUIRED
+>
+<!ELEMENT power (#PCDATA)>
 
-    <!-- Cars -->
-    <cars>
-        <car id="c1" modelRef="m1" engineRef="e1">
-            <price>20000</price>
-            <description>Standard Corolla with 1.6L petrol engine</description>
-            <color value="white"/>
-            <transmission type="manual"/>
-            <category type="sedan"/>
-            <picture>corolla_1.6_white.jpg</picture>
-            <year>2024</year>
-        </car>
+<!-- ===== Cars Section ===== -->
+<!ELEMENT cars (car+)>
+<!ELEMENT car (price, description, color, transmission, category, year)>
+<!ATTLIST car
+    id ID #REQUIRED
+    modelRef IDREF #REQUIRED
+    engineRef IDREF #REQUIRED
+    picture-link CDATA #IMPLIED
+>
 
-        <car id="c2" modelRef="m2" engineRef="e4">
-            <price>35000</price>
-            <description>RAV4 hybrid with advanced features</description>
-            <color value="blue"/>
-            <transmission type="automatic"/>
-            <category type="SUV"/>
-            <picture>rav4_2.5_hybrid_blue.jpg</picture>
-            <year>2024</year>
-        </car>
-
-        <car id="c3" modelRef="m3" engineRef="e5">
-            <price>41000</price>
-            <description>3 Series sedan with 2.0L petrol engine</description>
-            <color value="black"/>
-            <transmission type="automatic"/>
-            <category type="sedan"/>
-            <picture>3series_2.0_black.jpg</picture>
-            <year>2024</year>
-        </car>
-
-        <car id="c4" modelRef="m6" engineRef="e14">
-            <price>58000</price>
-            <description>Q5 SUV with hybrid engine</description>
-            <color value="silver"/>
-            <transmission type="DSG"/>
-            <category type="SUV"/>
-            <picture>q5_hybrid_silver.jpg</picture>
-            <year>2024</year>
-        </car>
-
-        <car id="c5" modelRef="m8" engineRef="e17">
-            <price>45000</price>
-            <description>Kodiaq SUV with petrol engine</description>
-            <color value="red"/>
-            <transmission type="automatic"/>
-            <category type="SUV"/>
-            <picture>kodiaq_2.0_petrol_red.jpg</picture>
-            <year>2024</year>
-        </car>
-    </cars>
-
-</catalog>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT color EMPTY>
+<!ATTLIST color
+    value CDATA #REQUIRED
+>
+<!ELEMENT transmission EMPTY>
+<!ATTLIST transmission
+    type CDATA #REQUIRED
+>
+<!ELEMENT category EMPTY>
+<!ATTLIST category
+    type CDATA #REQUIRED
+>
+<!ELEMENT year (#PCDATA)>
