@@ -30,4 +30,5 @@ if there is any issue with the xml, errors will appear. Otherwise (if the xml is
 
 ### 3. Quick reference
 
-For quick reference, there is available [example output file](https://github.com/nikevelik/cars-catalogue/tree/main/output/catalogue.pdf)
+- For quick reference, there is available [example output file](https://github.com/nikevelik/cars-catalogue/tree/main/output/catalogue.pdf)
+- [Presentation slides (annotated with comments)](https://docs.google.com/presentation/d/1JefakXi2HpTzZMgVSwpwgVoerhULLBf0HqtNOKd9J6g/edit?usp=sharing)
